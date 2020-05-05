@@ -1,6 +1,15 @@
 from typing import List
 
-# method 1: recursion
+# attempt 1
+def subsets(nums: List[int]) -> List[List[int]]:
+    res = [[]]
+
+    for n in nums:
+        res += [comb + [n] for comb in res]
+    
+    return res
+
+# solution 1: recursion
 class Solution1:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         output = [[]]
@@ -10,7 +19,7 @@ class Solution1:
         
         return output
 
-# method 2: backtracking
+# solution 2: backtracking
 # still don't really understand solution
 class Solution2:
     # nums: [1, 2, 3]
