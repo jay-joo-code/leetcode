@@ -1,7 +1,11 @@
 from typing import List
 
-# solution 1
+# attempt 1
 def commonChars(A: List[str]) -> List[str]:
+	
+
+# solution 1
+def commonCharsSol(A: List[str]) -> List[str]:
 	result = []
 
 	# uses set to get unique chars of A[0]

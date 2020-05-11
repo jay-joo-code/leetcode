@@ -32,3 +32,14 @@ def productExceptSelfTwo(nums: List[int]) -> List[int]:
 		prev *= nums[j]
 
 	return res
+
+# attempt 3: accepted!
+def productExceptSelfThree(nums: List[int]) -> List[int]:
+	left, right = [1], collections.deque([1])
+        
+        for i in range(1, len(A)):
+            left.append(left[i-1] * A[i-1])
+            j = len(A) - i
+            right.appendleft(right[0] * A[j])
+        
+        return [left[k] * right[k] for k in range(len(A))]
