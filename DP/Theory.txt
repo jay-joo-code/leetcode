@@ -1,0 +1,17 @@
+DP is breaking down a problem into smaller sub-problems,
+and storing (memoizing) the solution to each sub-problem
+so that each sub-problem is only solved once.
+
+DP is often an optimization over plain recursion 
+by removing repeated calls for the same inputs.
+But it is not limited to recursion.
+
+This optimisation can reduce time complexities 
+from exponential (recursion) to linear.
+
+However, since the optimisation often involves storing
+previously computed values, space complexity usually increases.
+
+Mainly 2 methods
+1. Storage (Memoization) (often Top-down approach)
+2. Bottom-up approach
