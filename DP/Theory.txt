@@ -15,3 +15,7 @@ previously computed values, space complexity usually increases.
 Mainly 2 methods
 1. Storage (Memoization) (often Top-down approach)
 2. Bottom-up approach
+
+Similar questions
+560. Subarray Sum Equals K
+647. Palindromic Substrings
