@@ -1,8 +1,20 @@
 from typing import List
 
-# attempt 1
+# attempt 2 (accepted)
 def commonChars(A: List[str]) -> List[str]:
-	
+	res = []
+        for char in A[0]:
+            contains_all = True
+            for i in range(1, len(A)):
+                if char in A[i]:
+                    A[i] = A[i].replace(char, '', 1)
+                else:
+                    contains_all = False
+            
+            if contains_all:
+                res.append(char)
+        
+        return res
 
 # solution 1
 def commonCharsSol(A: List[str]) -> List[str]:
