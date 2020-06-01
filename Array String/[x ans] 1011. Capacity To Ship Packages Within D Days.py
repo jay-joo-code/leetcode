@@ -1,15 +1,45 @@
 
+# attempt (wrong)
+def shipWithinDays(self, weights: List[int], D: int) -> int:
+	# even if mid's count == D
+	# need to set high = mid and iterate
+	# to find potentially lower capacity
+	# with the same number of count (number of ships)
+	low, high = max(weights), sum(weights)
+	
+	while low < high:
+			mid = low + (high - low) // 2
+			
+			count = 1
+			weight = 0
+			
+			for x in weights:
+					weight += x
+					
+					if weight > mid:
+							weight = x
+							count += 1
+			
+			if count == D:	# wrong part
+					return mid
+			elif count > D:
+					low = mid
+			elif count < D:
+					high = mid
+	
+	return low
+
 # retrospective attempt
 def shipWithinDays(weights, D):
 	low, high = max(weights), sum(weights)
 
 	while low < high:
 		mid = (low + high) // 2
+	
 
-		
-
-# solution: binary search
+# solution (accepted)
 def shipWithinDaysSolution(weights, D):
+	#  binary search
 	low, high = max(weights), sum(weights)
 
 	while low < high:
