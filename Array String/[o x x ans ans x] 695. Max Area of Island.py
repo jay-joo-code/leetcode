@@ -1,3 +1,20 @@
+
+# attempt (accepted)
+def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        count = 0
+        for row in range(len(grid)):
+            for col in range(len(grid[row])):
+                count = max(count, self.dfs(grid, row, col))
+        return count
+    
+    def dfs(self, grid, row, col):
+        if row < 0 or col < 0 or row >= len(grid) or col >= len(grid[row]) or grid[row][col] == 0:
+            return 0
+        
+        grid[row][col] = 0
+        
+        return 1 + self.dfs(grid, row+1, col) + self.dfs(grid, row-1, col) + self.dfs(grid, row, col+1) + self.dfs(grid, row, col-1)
+
 # attempt 1: wrong
 def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
 	max_area = 0
