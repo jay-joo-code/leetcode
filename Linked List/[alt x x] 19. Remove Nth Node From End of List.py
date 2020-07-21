@@ -33,6 +33,7 @@ def removeNthFromEnd(self, head, n):
 	for _ in range(n):
 		fast = fast.next
 	if not fast:
+		# elt removed is the first elt
 		return head.next
 	while fast.next:
 		fast = fast.next
