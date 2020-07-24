@@ -1,4 +1,21 @@
 
+# attempt 2 (AC)
+# iterative
+def reverseList(self, head: ListNode, prev=None) -> ListNode:
+        if not head: return head
+        
+        prev = head
+        curr = head.next
+        prev.next = None
+        
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+            
+        return prev
+
 # attempt (accepted)
 def reverseList(self, head: ListNode) -> ListNode:
 	node = head
