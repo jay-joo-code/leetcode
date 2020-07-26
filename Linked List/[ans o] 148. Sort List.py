@@ -1,4 +1,41 @@
 
+# attempt (AC)
+class Solution:    
+    def merge(self, n1, n2):
+        if not n1 or not n2:
+            return n1 or n2
+        
+        cur = dummy = ListNode(None)
+        
+        while n1 and n2:
+            if n1.val < n2.val:
+                cur.next = n1
+                n1 = n1.next
+            else:
+                cur.next = n2
+                n2 = n2.next
+            cur = cur.next
+        
+        cur.next = n1 or n2
+        return dummy.next
+        
+    def sortList(self, head):
+        if not head or not head.next: return head
+        slow = fast = head
+        
+        while fast and fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        right_start = slow.next
+        slow.next = None
+        
+        left = self.sortList(head)
+        right = self.sortList(right_start)
+        
+        merged = self.merge(left, right)
+        return merged
+
 # solution (AC)
 class Solution:
     # merge sort, recursively 

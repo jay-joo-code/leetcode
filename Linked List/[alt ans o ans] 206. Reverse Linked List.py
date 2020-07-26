@@ -1,4 +1,6 @@
 
+# ans: recursive solution
+
 # attempt 2 (AC)
 # iterative
 def reverseList(self, head: ListNode, prev=None) -> ListNode:
@@ -38,5 +40,6 @@ def reverseList(self, head, prev=None):
 	if not head:
 		return prev
 
-	curr, head.next = head.next, prev
+	curr = head.next
+	head.next = prev
 	return self.reverseList(curr, head)
