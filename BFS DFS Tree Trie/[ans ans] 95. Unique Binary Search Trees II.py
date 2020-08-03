@@ -1,6 +1,5 @@
 
 # solution (AC)
-# slow, high space 
 class Solution:
     def generateTrees(self, n):
         """
@@ -13,12 +12,16 @@ class Solution:
         
     def dfs(self, start, end):
         if start == end:
-            return None
+            return []
         result = []
         for i in range(start, end):
-            for l in self.dfs(start, i) or [None]:
-                for r in self.dfs(i+1, end) or [None]:
+            left_perms = self.dfs(start, i) or [None]
+            right_perms = self.dfs(i+1, end) or [None]
+            
+            for l in left_perms:
+                for r in right_perms:
                     node = TreeNode(i)
-                    node.left, node.right  = l, r
+                    node.left, node.right = l, r
                     result.append(node)
         return result
+
