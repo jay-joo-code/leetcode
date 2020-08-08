@@ -8,9 +8,24 @@ def countPairs(self, root: TreeNode, distance: int, depth=0) -> int:
                 return []
             if not node.left and not node.right:
                 return [1]
+
             left = dfs(node.left)
             right = dfs(node.right)
+
+            for l in left:
+                for r in right:
+                    if l+r <= distance:
+                        count += (l+r)
+            
+            for r in right:
+                count +=
             count += sum(l + r <= distance for l in left for r in right)
-            return [n + 1 for n in left + right if n + 1 < distance]
+
+            res = []
+            for n in left + right:
+                if n+1 < distance:
+                    res.append(n+1)
+
+            return res
         dfs(root)
         return count
