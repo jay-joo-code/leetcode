@@ -16,3 +16,24 @@ def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
             # return depth + 1, self
             else: return l[0] + 1, root
         return deep(root)[1]
+
+# attempt (AC)
+class Solution:
+    def dfs(self, root, depth):
+        if not root: return [0, None]
+        
+        if not root.right and not root.left:
+            return [depth, root]
+        
+        left, right = self.dfs(root.left, depth+1), self.dfs(root.right, depth+1)
+        
+        if left[0] == right[0]:
+            return [left[0], root]
+        
+        if left[0] > right[0]:
+            return left
+        else:
+            return right
+    
+    def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
+        return self.dfs(root, 0)[1]

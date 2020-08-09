@@ -33,3 +33,18 @@ def pathSum(self, root, sum, target=[None]):
         
         new_target = [t-root.val for t in target]+[sum]
         return count + self.pathSum(root.left, sum, new_target) + self.pathSum(root.right, sum, new_target)
+
+# attempt (AC)
+def pathSum(self, root, sm, targets=[]):
+        if not root: return 0
+        
+        if not targets:
+            targets = [sm]
+        
+        count = 0 
+        
+        for t in targets:
+            if root.val == t:
+                count += 1
+        new_targets = [sm]+[t-root.val for t in targets]
+        return count + self.pathSum(root.left, sm, new_targets) + self.pathSum(root.right, sm, new_targets)

@@ -49,5 +49,3 @@ def flatten(self, root: TreeNode) -> None:
         tail.right = root.right
         root.right = root.left
         root.left = None
-
-# solution 2 (AC)

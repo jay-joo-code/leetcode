@@ -25,3 +25,23 @@ class Solution:
                     result.append(node)
         return result
 
+# attempt (AC)
+class Solution:
+    def possible_roots(self, start, end):
+        if start == end: return [None]
+        
+        res = []
+        for val in range(start, end):
+            left_roots, right_roots = self.possible_roots(start, val), self.possible_roots(val+1, end)
+            for left in left_roots:
+                for right in right_roots:
+                    root = TreeNode(val)
+                    root.left, root.right = left, right
+                    res.append(root)
+        
+        return res
+    
+    def generateTrees(self, n):
+        if n == 0: return []
+        
+        return self.possible_roots(1, n+1)

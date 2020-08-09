@@ -34,3 +34,23 @@ def allPossibleFBT(self, N: int) -> List[TreeNode]:
                     root.right = right
                     res += [root]
         return res
+
+# attempt (AC) after a couple of mistakes
+def allPossibleFBT(self, N: int) -> List[TreeNode]:
+        if not N: return []
+        if N == 1: return [TreeNode(0)]
+        if N % 2 == 0: return []
+        
+        res = []
+        
+        for l in range(1, N-1, 2):
+            r = N-1-l
+            left_roots = self.allPossibleFBT(l) or [None]
+            right_roots = self.allPossibleFBT(r) or [None]
+            for left in left_roots:
+                for right in right_roots:
+                    root = TreeNode(0)
+                    root.left, root.right = left, right
+                    res.append(root)
+        
+        return res
